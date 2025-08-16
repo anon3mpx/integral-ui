@@ -18,8 +18,8 @@ const Summary = ({ currencyA, currencyB }: ISummary) => {
 
     const { infoClient } = useClients();
 
-    const token0 = currencyA?.wrapped.address.toLowerCase() as Address;
-    const token1 = currencyB?.wrapped.address.toLowerCase() as Address;
+    const token0 = currencyA?.wrapped?.address?.toLowerCase() as Address;
+    const token1 = currencyB?.wrapped?.address?.toLowerCase() as Address;
 
     const { data: singleToken0 } = useSingleTokenQuery({
         variables: {

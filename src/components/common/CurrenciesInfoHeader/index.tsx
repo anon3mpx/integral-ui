@@ -44,7 +44,7 @@ export function TokenInfo({ token }: { token?: Currency | null }) {
     const [expanded, setExpanded] = useState(false);
     if (!token) return null;
 
-    const address = (token.wrapped.address as Address) || ADDRESS_ZERO;
+    const address = token.isNative ? ADDRESS_ZERO : (token.wrapped.address as Address) || ADDRESS_ZERO;
 
     return (
         <span className="flex items-center gap-2 font-semibold">

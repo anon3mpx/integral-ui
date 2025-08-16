@@ -20,7 +20,7 @@ export interface CommonPoolsParams {
 export function useV3CandidatePools(currencyA?: Currency, currencyB?: Currency, options?: V3PoolsHookParams) {
     const chainId = useChainId();
     const key = useMemo(() => {
-        if (!currencyA || !currencyB || currencyA.chainId !== currencyB.chainId || currencyA.wrapped.equals(currencyB.wrapped)) {
+        if (!currencyA || !currencyB || currencyA.chainId !== currencyB.chainId || !currencyA.wrapped || !currencyB.wrapped || currencyA.wrapped.equals(currencyB.wrapped)) {
             return "";
         }
         const symbols = currencyA.wrapped.sortsBefore(currencyB.wrapped)

@@ -36,13 +36,13 @@ export default function useWrapCallback(
 
     const { isLoading: isWrapLoading } = useTransactionAwait(wrapData, {
         title: `Wrap ${inputAmount?.toSignificant(3)} ${DEFAULT_NATIVE_SYMBOL}`,
-        tokenA: WNATIVE[chainId].address as Address,
+        tokenA: WNATIVE[chainId]?.address as Address,
         type: TransactionType.SWAP,
     });
 
     const unwrapConfig = inputAmount
         ? {
-              address: WNATIVE[chainId].address as Address,
+              address: WNATIVE[chainId]?.address as Address,
               args: [BigInt(inputAmount.quotient.toString())] as const,
           }
         : undefined;
@@ -51,7 +51,7 @@ export default function useWrapCallback(
 
     const { isLoading: isUnwrapLoading } = useTransactionAwait(unwrapData, {
         title: `Unwrap ${inputAmount?.toSignificant(3)} W${DEFAULT_NATIVE_SYMBOL}`,
-        tokenA: WNATIVE[chainId].address as Address,
+        tokenA: WNATIVE[chainId]?.address as Address,
         type: TransactionType.SWAP,
     });
 

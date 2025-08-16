@@ -27,8 +27,15 @@ export function useAllTokens(showNativeToken: boolean = true) {
             const _importedTokens = Object.values(importedTokens[chainId] || []);
             for (const token of _importedTokens) {
                 tokens.set(token.id.toLowerCase() as Address, {
-                    ...token,
-                    derivedMatic: 0,
+                    id: token.id,
+                    symbol: token.symbol,
+                    name: token.name,
+                    decimals: token.decimals.toString(),
+                    derivedMatic: "0",
+                    volumeUSD: "0",
+                    totalValueLockedUSD: "0",
+                    feesUSD: "0",
+                    txCount: "0",
                 });
             }
             return [...tokens].map(([, token]) => ({ ...token }));
@@ -37,10 +44,14 @@ export function useAllTokens(showNativeToken: boolean = true) {
         if (showNativeToken)
             tokens.set(ADDRESS_ZERO, {
                 id: ADDRESS_ZERO,
-                symbol: NATIVE_SYMBOL[chainId],
-                name: NATIVE_NAME[chainId],
-                decimals: 18,
-                derivedMatic: 1,
+                symbol: NATIVE_SYMBOL[chainId as keyof typeof NATIVE_SYMBOL],
+                name: NATIVE_NAME[chainId as keyof typeof NATIVE_NAME],
+                decimals: "18",
+                derivedMatic: "1",
+                volumeUSD: "0",
+                totalValueLockedUSD: "0",
+                feesUSD: "0",
+                txCount: "0",
             });
 
         for (const token of allTokens.tokens.filter((token) => !tokensBlackList.includes(token.id as Address))) {
@@ -51,8 +62,15 @@ export function useAllTokens(showNativeToken: boolean = true) {
 
         for (const token of _importedTokens) {
             tokens.set(token.id.toLowerCase() as Address, {
-                ...token,
-                derivedMatic: 0,
+                id: token.id,
+                symbol: token.symbol,
+                name: token.name,
+                decimals: token.decimals.toString(),
+                derivedMatic: "0",
+                volumeUSD: "0",
+                totalValueLockedUSD: "0",
+                feesUSD: "0",
+                txCount: "0",
             });
         }
 

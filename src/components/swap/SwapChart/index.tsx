@@ -16,7 +16,7 @@ const SwapChart = ({ derivedSwap }: { derivedSwap: IDerivedSwapInfo }) => {
     const [span, setSpan] = useState<ChartSpanType>(CHART_SPAN.WEEK);
 
     const poolId = useMemo(() => {
-        if (!tokenA || !tokenB) return undefined;
+        if (!tokenA || !tokenB || !tokenA.wrapped || !tokenB.wrapped) return undefined;
         return computePoolAddress({
             tokenA: tokenA.wrapped,
             tokenB: tokenB.wrapped,

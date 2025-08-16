@@ -15,7 +15,7 @@ export function useUSDCPrice(currency: Currency | undefined) {
 
     const { data: token } = useSingleTokenQuery({
         variables: {
-            tokenId: currency ? currency.wrapped.address.toLowerCase() : "",
+            tokenId: currency?.wrapped?.address?.toLowerCase() || "",
         },
         client: infoClient,
     });
@@ -29,7 +29,7 @@ export function useUSDCPrice(currency: Currency | undefined) {
         }
 
         // USDC itself — 1:1 price
-        if (STABLECOINS[chainId].USDC.address.toLowerCase() === currency.wrapped.address.toLowerCase()) {
+        if (STABLECOINS[chainId] && currency.wrapped && STABLECOINS[chainId].USDC.address.toLowerCase() === currency.wrapped.address.toLowerCase()) {
             return {
                 price: new Price(STABLECOINS[chainId].USDC, STABLECOINS[chainId].USDC, "1", "1"),
                 formatted: 1,

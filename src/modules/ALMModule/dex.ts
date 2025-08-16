@@ -1,3 +1,3 @@
-import { SupportedDex } from "@cryptoalgebra/alm-sdk";
+// import { CLAMM } from "@cryptoalgebra/alm-sdk";
 
-export const DEX = SupportedDex.CLAMM;
+// export const DEX = CLAMM;
