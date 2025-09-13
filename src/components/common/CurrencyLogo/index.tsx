@@ -1,9 +1,8 @@
 import { Currency } from "@cryptoalgebra/sdk";
 import React from "react";
 import { Address } from "wagmi";
-import USDTLogo from "@/assets/tokens/USDC.png";
+import USDTLogo from "@/assets/tokens/usdt.png";
 import USDCLogo from "@/assets/tokens/usdc.svg";
-import WBTCLogo from "@/assets/tokens/wbtc.svg";
 import EtherLogo from "@/assets/tokens/ether.svg";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
